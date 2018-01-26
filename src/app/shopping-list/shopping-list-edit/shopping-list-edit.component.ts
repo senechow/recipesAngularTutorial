@@ -20,7 +20,6 @@ export class ShoppingListEditComponent {
 	}
 
 	addIngredientToShoppingCart() {
-
 		const name = this.nameInput.nativeElement.value;
 		const amount =  this.amountInput.nativeElement.value;
 		this.shoppingListService.addIngredient(new Ingredient(name, amount));

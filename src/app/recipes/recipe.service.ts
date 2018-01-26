@@ -11,6 +11,7 @@ export class RecipeService {
 
 	private recipes: Recipe[] = [
 		new Recipe(
+			1,
 			'Pizza', 
 			'Tasty pizza', 
 			'https://www.cicis.com/media/1176/pizza_trad_pepperonibeef.png',
@@ -19,6 +20,7 @@ export class RecipeService {
 				new Ingredient('Dough', 10)
 			]),
 		new Recipe(
+			2,
 			'Hamburger', 
 			'Who wants a burger!', 
 			'https://www.yummy.co.ke/wp-content/uploads/2013/05/burgerP.jpg',
@@ -32,6 +34,12 @@ export class RecipeService {
 
 	getRecipes() {
 		return this.recipes.slice(); //Returns a copy of the original recipes.
+	}
+
+	getRecipe(id : number) {
+		for(let i = 0; i < this.recipes.length; i++) {
+			if(this.recipes[i].id === id) return this.recipes[i];
+		}
 	}
 
 	addIngredientsToShoppingList(ingredients: Ingredient[]) {
