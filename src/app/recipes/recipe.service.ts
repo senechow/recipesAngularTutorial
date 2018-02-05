@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+
+import { Observable } from 'rxjs/Observable'; 
 import { Subject } from 'rxjs/Subject'; 
 
 import { Recipe } from './recipe.model';
@@ -33,7 +36,10 @@ export class RecipeService {
 
 	private idCounter : number = 2;
 
-	constructor(private shoppingListService : ShoppingListService){}
+	constructor(private shoppingListService : ShoppingListService,
+				private http: Http){
+
+	}
 
 	getRecipes() {
 		return this.recipes.slice(); //Returns a copy of the original recipes.
@@ -73,6 +79,11 @@ export class RecipeService {
 				break;
 			}
 		}
+	}
+
+	setRecipes(recipes: Recipe[]) {
+		this.recipes = recipes;
+		this.recipeChanged.next(this.recipes.slice());
 	}
 
 }
